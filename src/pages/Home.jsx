@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import DisneyApi from "../services/DisneyAPI.js";
+import CharacterCard from "../components/CharacterCard.jsx";
 
 export const Home = () => {
 
@@ -15,7 +16,7 @@ export const Home = () => {
 
 	return (
 		<div className="text-center mt-5">
-			{/* <CharacterCard */}
+			<CharacterCard character={character}/>
 
 		</div>
 	);

@@ -1,19 +1,33 @@
-export const initialStore=()=>{
-  return{
+export const initialStore = () => {
+  return {
     characters: [],
-   
+    favorites: []
+
   }
 }
 
 export default function storeReducer(store, action = {}) {
-  switch(action.type){
+  switch (action.type) {
     case 'set_characters':
-           
+
       return {
         ...store,
-       characters: action.payload
+        characters: action.payload
       };
-    default:
-      throw Error('Unknown action.');
-  }    
-}
+
+
+    case 'add_favorite':
+      const existFavourite = store.favourites.find(fav => fav._id === action.payload._id)
+      
+        if(existFavourite) {
+          return store
+        }
+        return {
+          ...store,
+          favourites:[ ...store.favourites, action.paylod]
+
+        }
+  default:
+      return store;
+      }
+  }
