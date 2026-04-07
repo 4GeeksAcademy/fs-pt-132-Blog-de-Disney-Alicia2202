@@ -1,58 +1,37 @@
-import { useParams } from "react-router-dom"
-import { useEffect, useState } from "react";
-import DisneyApi from "../services/DisneyAPI";
+import { useParams,Link } from "react-router-dom"
+import useGlobalReducer from "../hooks/useGlobalReducer";
 
 const CharacterDetail = () => {
   const { id } = useParams()
-  const [character, setCharacter] = useState(null);
+  const {store} = useGlobalReducer();
 
-  useEffect (()=> {
-    setCharacter(null);
-    DisneyApi.getSingleCharacter(id).then (data => setCharacter (data))
-  },[id])
-  // const character = store.characters?.find(item => item._id === id);
+  const character = store.characters.find(char => char._id === id);
 
+  if (!character) return <div className="container mt-5">Cargando...</div>
   
-  if (!character) {
-    return (
-      <div className="container mt-5 text-center">
-        <div className="spinner-border text-primary" role="status">
-          <span className="visually-hidden">Cargando...</span>
-        </div>
-        <p className="mt-2">Cargando detalles de Disney...</p>
-      </div>
-    );
-  }
 
   return (
     <div className="container mt-5">
-      <div className="card mb-3">
-        <div className="row g-0">
-          <div className="col-md-4">
+      <Link to="/" className="btn btn-secondary mb-4">Home</Link>
+      
+      <div className="row align-items-center bg-light p-5 rounded shadow">
+        <div className="col-md-4 text-center">
+          
             <img
-              src={character.imageUrl}
-              className="img-fluid rounded-start"
+              src={character.image}
+              className="img-fluid rounded"
               alt={character.name}
             />
           </div>
           <div className="col-md-8">
-            <div className="card-body">
-              <h1 className="card-title">{character.name}</h1>
-              <hr />
-              <h5>Películas:</h5>
-              <ul>
-                {character.films?.map((film, index) => (
-                  <li key={index}>{film}</li>
-                ))}
-              </ul>
-              <p className="card-text">
-                <small className="text-muted">ID del personaje: {id}</small>
-              </p>
-            </div>
+            
+              <h1 className="display-4 fw-bold">{character.name}</h1>
+                
+              </div>
           </div>
         </div>
-      </div>
-    </div>
+     
+   
   );
 };
 

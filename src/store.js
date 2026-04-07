@@ -2,34 +2,33 @@ export const initialStore = () => {
   return {
     characters: [],
     favorites: []
-
   }
 }
 
 export default function storeReducer(store, action = {}) {
+  console.log("Reducer recibió acción:", action); // Esto es clave para debuguear
+
   switch (action.type) {
     case 'set_characters':
-
       return {
         ...store,
-        characters: action.payload
+        characters: action.payload || [] 
       };
 
-
-    case 'add_favorite': // Cambiado para que coincida con la Card
-      // Usamos siempre 'favorites' como definiste en initialStore
-      const existFavorite = store.favorites.find(fav => fav._id === action.payload._id)
-
-      if (existFavorite) {
-        return {
-          ...store,
-          favorites: store.favorites.filter(fav => fav._id !== action.payload._id)
-        };
-      }
+    case 'add_favorite':
+      
+      if (store.favorites.find(fav => fav._id === action.payload._id)) return store;
       return {
         ...store,
-        favorites: [...store.favorites, action.payload] // Corregido: payload
-      }
+        favorites: [...store.favorites, action.payload]
+      };
+
+    case 'remove_favorite':
+      return {
+        ...store,
+        favorites: store.favorites.filter(fav => fav._id !== action.payload._id)
+      };
+
     default:
       return store;
   }
