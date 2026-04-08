@@ -10,7 +10,7 @@ export const Home = () => {
 	useEffect(() => {
 		SimpsonApi.getCharacters().then(data => dispatch({
 			type: "set_characters",
-			payload: data.docs || []
+			payload: data.results
 		}))
 			.catch(error => console.error("Error cargando personajes:", error));
 	}, []);

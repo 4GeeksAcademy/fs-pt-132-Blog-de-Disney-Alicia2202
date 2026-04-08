@@ -1,11 +1,19 @@
 import { useParams, Link } from "react-router-dom"
 import useGlobalReducer from "../hooks/useGlobalReducer";
+import { useEffect, useState } from "react";
+import SimpsonApi from "../services/SimpsonAPI";
 
 const CharacterDetail = () => {
   const { id } = useParams()
-  const { store } = useGlobalReducer();
+  // const { store } = useGlobalReducer();
+  const {getSingleCharacter}= SimpsonApi
+  const [character,setCharacter] = useState({});
 
-  const character = store.characters.find(char => char._id === id);
+  useEffect(() =>{
+    getSingleCharacter(id).then (data => setCharacter(data))
+  },[])
+
+  // const character = store.characters.find(char => char.id === id);
 
   if (!character) return <div className="container mt-5 text-center"><h3>Cargando personaje...</h3></div>
 

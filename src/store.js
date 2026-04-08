@@ -6,7 +6,7 @@ export const initialStore = () => {
 }
 
 export default function storeReducer(store, action = {}) {
-  console.log("Reducer recibió acción:", action); // Esto es clave para debuguear
+  
 
   switch (action.type) {
     case 'set_characters':
