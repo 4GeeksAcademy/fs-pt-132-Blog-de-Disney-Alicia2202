@@ -4,15 +4,15 @@ import SimpsonApi from "../services/SimpsonAPI";
 
 const EpisodeDetails = () => {
   const { id } = useParams()
-  const {getSingleEpisode}= SimpsonApi
-  const [episode,setEpisode] = useState({});
+  const { getSingleEpisode } = SimpsonApi
+  const [episode, setEpisode] = useState({});
   const image = 'https://cdn.thesimpsonsapi.com/500' + episode.image_path
 
-  useEffect(() =>{
-    getSingleEpisode(id).then (data => setEpisode(data))
-  },[])
+  useEffect(() => {
+    getSingleEpisode(id).then(data => setEpisode(data))
+  }, [])
 
-  
+
 
   if (!episode) return <div className="container mt-5 text-center"><h3>Cargando episodio...</h3></div>
 
@@ -22,63 +22,35 @@ const EpisodeDetails = () => {
         <i className="fas fa-arrow-left me-2"></i>Volver
       </Link>
 
-      
       <div className="row bg-white border rounded shadow-sm overflow-hidden">
-        
-        
-        <div className="col-md-4 p-0 bg-warning d-flex align-items-center justify-content-center">
+
+{/* d-flex align-items-center justify-content-center */}
+        <div className="col-lg-12 col-md-12 col-sm-12 p-0  d-flex align-items-center justify-content-center episode-details-img">
           <img
             src={image}
-            className="img-fluid p-4"
+            className="w-100 d-block "
             alt={episode.name}
-            style={{ maxHeight: "400px", objectFit: "contain" }}
+            style={{ maxHeight: "450px", maxWidth:"1000px",display: "block", objectFit:"initial" }}
           />
         </div>
 
-        
-        <div className="col-md-8 p-5 d-flex flex-column justify-content-center">
-          <h1 className="display-3 fw-bold text-uppercase mb-2">{episode.name}</h1>
-          
+
+        <div className="col-lg-12 col-md-12 col-sm-12 p-5 d-flex flex-column justify-content-center">
+          <h1 className="display-3 fw-bold text-uppercase mb-2 text-center">{episode.name}</h1>
+
 
           <div className="row border-top pt-4">
-            <div className="col-6 col-sm-4 mb-3">
-              <h6 className="text-warning text-uppercase small fw-bold">Sinopsis</h6>
+            <div className="col-lg-12 col-md-12 col-sm-12 mb-3">
+              <h6 className="text-warning text-uppercase fw-bold">Sinopsis</h6>
               <p className="fs-5">{episode.synopsis || "Unknown"}</p>
             </div>
 
-            {/* <div className="col-6 col-sm-4 mb-3">
-              <h6 className="text-warning text-uppercase small fw-bold">Género</h6>
-              <p className="fs-5">{character.gender || "Unknown"}</p>
-            </div>
 
-            <div className="col-12 col-sm-4 mb-3">
-              <h6 className="text-warning text-uppercase small fw-bold">Ocupación</h6>
-              <p className="fs-5">{character.occupation || "Unknown"}</p>
-            </div> */}
           </div>
         </div>
       </div>
 
 
-      {/* {character.phrases && character.phrases.length > 0 && (
-        <div className="mt-5">
-          <h2 className="mb-4 fw-bold">
-            <span className="border-bottom border-4 border-warning">Frases</span> Célebres
-          </h2>
-          <div className="row">
-            {character.phrases.map((phrase, index) => (
-              <div key={index} className="col-md-6 mb-3">
-                <div className="card h-100 border-0 shadow-sm bg-light">
-                  <div className="card-body d-flex align-items-start">
-                    <i className="fas fa-quote-left text-warning me-3 fs-4 mt-1"></i>
-                    <p className="card-text fst-italic fs-5">{phrase}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )} */}
     </div>
   );
 };
