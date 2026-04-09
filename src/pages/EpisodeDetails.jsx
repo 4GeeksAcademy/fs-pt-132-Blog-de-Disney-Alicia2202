@@ -24,7 +24,7 @@ const EpisodeDetails = () => {
 
       <div className="row bg-white border rounded shadow-sm overflow-hidden">
 
-{/* d-flex align-items-center justify-content-center */}
+
         <div className="col-lg-12 col-md-12 col-sm-12 p-0  d-flex align-items-center justify-content-center episode-details-img">
           <img
             src={image}

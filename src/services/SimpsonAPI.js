@@ -52,5 +52,29 @@ SimpsonApi.getSingleEpisode = async (id) => {
     }
 }
 
+SimpsonApi.getLocations = async (limit=20) => {
+    try {
+        const resp = await fetch(url + "/locations?limit="+limit)
+        if (!resp.ok) throw new Error ('Error getting locations');
+        const data = await resp.json ();
+        return data
+    } catch (error) {
+        console.log(error);
+        return []
+    }
+}
+
+SimpsonApi.getSingleLocation = async (id) => {
+    try {
+        const resp = await fetch (url + "/locations/" + id);
+        if (!resp.ok) throw new Error ('Error getting location');
+        const data = await resp.json();
+        return data
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
 
 export default SimpsonApi;

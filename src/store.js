@@ -2,7 +2,8 @@ export const initialStore = () => {
   return {
     characters: [],
     favorites: [],
-    episodes: []
+    episodes: [],
+    locations: []
   }
 }
 
@@ -34,6 +35,12 @@ export default function storeReducer(store, action = {}) {
       return {
       ...store, 
       episodes: action.payload
+      }
+
+    case 'setLocations':
+      return{
+        ...store,
+        locations: action.payload
       }
 
     default:
