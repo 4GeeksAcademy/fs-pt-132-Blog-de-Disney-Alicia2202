@@ -19,7 +19,7 @@ export default function storeReducer(store, action = {}) {
 
     case 'addFavorite':
       
-      if (store.favorites.find(fav => fav.id === action.payload.id)) return store;
+      if (store.favorites.find(fav => fav.id === action.payload.id && fav.type === action.payload.type)) return store;
       return {
         ...store,
         favorites: [...store.favorites, action.payload]
@@ -28,7 +28,7 @@ export default function storeReducer(store, action = {}) {
     case 'removeFavorite':
       return {
         ...store,
-        favorites: store.favorites.filter(fav => fav.id !== action.payload.id)
+        favorites: store.favorites.filter(fav => !(fav.id === action.payload.id && fav.type === action.payload.type))
       };
 
     case 'setEpisodes':

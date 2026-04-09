@@ -6,11 +6,11 @@ const LocationCard = ({ location }) => {
     const { store, dispatch } = useGlobalReducer();
     
 
-    const isFavourite = store.favorites?.some(fav => fav.id === location.id);
+    const isFavourite = store.favorites?.some(fav => fav.id === location.id && fav.type === 'location');
     const handleFavorite = () => {
         dispatch({
             type: isFavourite? 'removeFavorite':'addFavorite',
-            payload: location
+            payload:{...location, type: 'location'}
         })
     }
     const image = 'https://cdn.thesimpsonsapi.com/200' + location.image_path

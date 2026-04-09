@@ -6,11 +6,11 @@ const CharacterCard = ({ character }) => {
     const { store, dispatch } = useGlobalReducer();
     
 
-    const isFavourite = store.favorites?.some(fav => fav.id === character.id);
+    const isFavourite = store.favorites?.some(fav => fav.id === character.id && fav.type === 'character');
     const handleFavorite = () => {
         dispatch({
             type: isFavourite? 'removeFavorite':'addFavorite',
-            payload: character
+            payload: {...character, type:'character'}
         })
     }
     const image = 'https://cdn.thesimpsonsapi.com/200' + character.portrait_path

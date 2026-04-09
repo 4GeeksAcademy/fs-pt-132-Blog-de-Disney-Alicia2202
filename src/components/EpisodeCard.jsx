@@ -6,11 +6,11 @@ const EpisodeCard = ({ episode }) => {
     const { store, dispatch } = useGlobalReducer();
     
 
-    const isFavourite = store.favorites?.some(fav => fav.id === episode.id);
+    const isFavourite = store.favorites?.some(fav => fav.id === episode.id && fav.type === 'episode');
     const handleFavorite = () => {
         dispatch({
             type: isFavourite? 'removeFavorite':'addFavorite',
-            payload: episode
+            payload: {...episode, type:'episode'}
         })
     }
     const image = 'https://cdn.thesimpsonsapi.com/200' + episode.image_path
