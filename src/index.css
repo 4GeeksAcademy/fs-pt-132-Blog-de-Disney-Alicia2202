@@ -1,3 +1,60 @@
 .episode-details-img{
      background-color: #f8f9faee;
 }
+.dropdown-item:active {
+    background-color: #0d6efd;
+}
+
+.last-border-0:last-child {
+    border-bottom: none !important;
+}
+
+.dropdown-item i:hover {
+    color: #dc3545;
+    transform: scale(1.2);
+    transition: all 0.2s ease;
+}
+
+.dropdown-menu {
+    border: none;
+    border-radius: 12px;
+}
+
+.dropdown-item {
+    transition: background-color 0.2s;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+}
+
+body {
+  background-image: url("https://i.pinimg.com/236x/0d/31/4e/0d314ee93c6ffd3db3b6920fe90244ba.jpg");
+  background-repeat: repeat;      
+  background-size: 300px;        
+  background-attachment: fixed;  
+  background-color: #f8f9fa;     
+}
+
+
+.navbar {
+  background-color: rgba(248, 249, 250, 0.8) !important; 
+  backdrop-filter: blur(8px); 
+  -webkit-backdrop-filter: blur(8px); 
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  position: sticky; 
+  top: 0;
+  z-index: 1000;
+}
+
+
+footer {
+  background-color: rgba(248, 249, 250, 0.8) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 20px 0;
+  margin-top: 50px;
+}
+
+

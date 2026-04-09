@@ -14,7 +14,7 @@ const LocationCard = ({ location }) => {
         })
     }
     const image = 'https://cdn.thesimpsonsapi.com/200' + location.image_path
-  console.log(location)
+ 
     return (
         <div className="card h-100 shadow-sm border-0">
 
