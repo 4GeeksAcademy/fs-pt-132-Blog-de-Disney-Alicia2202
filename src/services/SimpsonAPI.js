@@ -7,7 +7,7 @@ SimpsonApi.getCharacters = async (limit = 20) => {
         if (!resp.ok) throw new Error ('Error getting characters')
         
         const data = await resp.json();
-        // console.log("Respuesta completa de la API:", data)
+        
         return data;
         
     } catch (error) {
